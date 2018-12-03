@@ -1,18 +1,4 @@
-# History files
+data/
+.RDataTmp
 .Rhistory
-
-# Example code in package build process
-*-Ex.R
-
-# R data files from past sessions
-.Rdata
-
-.DS_Store
-
-# Ignore data files
-test/
-train/
-activity_labels.txt
-features_info.txt
-features.txt
-README.txt
+.RData
