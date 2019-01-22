@@ -1,0 +1,30 @@
+---
+date: "January 22, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# January 22, 2019
+
+```{r chunk 1}
+place <- c("University of California, Los Anglees", "10941 Strathmore Drive", "Aurora", "Coffee Bean", "many dollars spent, many books unread, much music heard", "St. Agnes Hospital", "Talvandi Arain", "Sialkot, Punjab", "Dharamsala, Himachal Pradesh", "Magnolia Hotel", "Lahore, Punjab", "Ratajoa (Pool of Blood)" )
+
+place_links <- c( "<a href='http://socialsciences.ucla.edu/departments/'>UCLA</a>", "<a href='https://en.wikipedia.org/wiki/Bhavacakra'>Westwood</a>", "<a href='http://cherrycreekschools.org/Pages/default.aspx'>Centennial</a>", "<a href='https://psychcentral.com/blog/archives/2012/04/15/caffeines-effects-on-your-thinking/'>many cups of joe</a>", "<a href='https://shop.uclastore.com/c-318-bookzone.aspx'>many dollars spent, many books unread</a>", "<a href='http://www.stagnes.org/150/'>where it all began</a>", "<a href='https://en.wikipedia.org/wiki/Partition_of_India'>daadkay dee praanee pind</a>", "<a href='https://en.wikipedia.org/wiki/Sialkot'>Ami day naandkay</a>", "<a href='https://www.youtube.com/watch?v=nWY0Tyhu9MM'>Madhyamaka</a>", "<a href='http://www.starwoodhotels.com/gx/property/overview/index.html?propertyID=4703&SWAQ=958P'>The Special Day</a>", "<a href='https://en.wikipedia.org/wiki/Lahore'>Lahore</a>", "<a href='http://press.princeton.edu/titles/4250.html'>Pind</a>")
+
+lat <- c(34.068921,
+         34.0672062, 39.615245, 39.615245, 34.0627396, 39.9260163, 31.5188331, 31.5188331, 
+         32.5179603, 32.21904200000001,31.4054167, 31.1914511)
+lng <- c(-118.44518110000001, -118.45007800000002, -104.79553599999997, -118.44504139999998, -118.44456500000001, 
+         -75.1697964, 75.74659750000001, 74.50091680000003, 76.32340369999997, -104.99235140000002, 74.16363130000002, 74.05791850000003)
+
+df <- data.frame(place, place_links, lat, lng)
+
+library(leaflet)
+df %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(lat=lat, lng=lng, popup=place_links, clusterOptions=markerClusterOptions)
+```
